@@ -1,13 +1,14 @@
 <template>
-  <div class="products">
+  <div class="products__content" v-if="products.length !== 0">
     <product-component
-      v-if="searchedProducts.length !== 0"
-      v-for="(product, index) in searchedProducts"
+      v-for="(product, index) in products"
       :key="index"
       :product="product"
     />
+  </div>
 
-    <p v-else>Aucun produit correspondant aux critères.</p>
+  <div class="products__content" v-else>
+    <p>Aucun produit correspondant aux critères.</p>
   </div>
 </template>
 
@@ -23,10 +24,31 @@ export default {
     };
   },
   mounted() {
-    fetch('/assets/db/produits.json')
+    fetch('/produits.json')
       .then((response) => response.json())
       .then((response) => {
+        /* The data to be rendered */
         this.products = response;
+
+        /* Deduce the genders & colors */
+        let genders = [];
+        let colors = [];
+
+        this.products.forEach((product) => {
+          if (product.sexe !== '' && !genders.includes(product.sexe)) {
+            genders.push(product.sexe);
+          }
+
+          product.couleur.split(', ').forEach((color) => {
+            if (color !== '' && !colors.includes(color)) {
+              colors.push(color);
+            }
+          });
+        });
+
+        /* The data is emitted to the parent in order to be rendered */
+        this.$emit('genders-update', genders);
+        this.$emit('colors-update', colors);
       })
       .catch((error) =>
         console.log(`ERREUR [${error.code}] : ${error.message}.`)

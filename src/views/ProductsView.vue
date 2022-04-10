@@ -1,8 +1,11 @@
 <template>
   <div class="products-page">
-    <filters-component />
+    <filters-component :genders="genders" :prices="prices" :colors="colors" />
 
-    <products-component />
+    <products-component
+      @genders-update="setGenders"
+      @colors-update="setColors"
+    />
   </div>
 </template>
 
@@ -15,15 +18,20 @@ export default {
   components: { FiltersComponent, ProductsComponent },
   data() {
     return {
-      gender: [],
-      price: [],
+      genders: [],
+      prices: ['Moins de 50€', '50€ - 100€', '100€ - 150€', 'Plus de 150€'],
       colors: [],
-      colorChoices: [],
     };
   },
-  computed: {
-    searchedProducts() {
-      return this.products.filter((product) => {});
+  methods: {
+    setGenders(genders) {
+      this.genders = genders;
+    },
+    setPrices(prices) {
+      this.prices = prices;
+    },
+    setColors(colors) {
+      this.colors = colors;
     },
   },
 };

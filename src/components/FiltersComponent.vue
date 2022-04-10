@@ -14,12 +14,10 @@ import ColorsComponent from './ColorsComponent.vue';
 export default {
   name: 'FiltersComponent',
   components: { GendersComponent, ColorsComponent, PricesComponent },
-  data() {
-    return {
-      genders: [],
-      prices: [],
-      colors: [],
-    };
+  props: {
+    genders: Array,
+    prices: Array,
+    colors: Array,
   },
 };
 </script>

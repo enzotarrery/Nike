@@ -1,7 +1,12 @@
 <template>
   <label :for="`price-${price}`">
-    {{ price }} €
-    <input type="checkbox" :name="`price-${price}`" :id="`price-${price}`" />
+    {{ price }}
+    <input
+      type="checkbox"
+      :name="`price-${price}`"
+      :id="`price-${price}`"
+      @change="updatePrice"
+    />
   </label>
 </template>
 
@@ -10,6 +15,17 @@ export default {
   name: 'PriceComponent',
   props: {
     price: String,
+  },
+  methods: {
+    updatePrice(event) {
+      const checkbox = event.target;
+
+      if (checkbox.checked) {
+        this.$emit('price-add');
+      } else {
+        this.$emit('price-remove');
+      }
+    },
   },
 };
 </script>

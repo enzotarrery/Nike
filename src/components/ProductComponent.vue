@@ -1,10 +1,6 @@
 <template>
   <figure class="product">
-    <img
-      class="product__thumbnail"
-      :src="product.photo"
-      :alt="product.article"
-    />
+    <img class="product__thumbnail" :src="image" :alt="product.article" />
 
     <figcaption class="product__content">
       <h3 class="product__title">{{ product.article }}</h3>
@@ -18,6 +14,13 @@ export default {
   name: 'ProductComponent',
   props: {
     product: Object,
+  },
+  computed: {
+    image() {
+      return this.product.photo
+        ? require(`@/assets/img/${this.product.photo}`)
+        : null;
+    },
   },
 };
 </script>
