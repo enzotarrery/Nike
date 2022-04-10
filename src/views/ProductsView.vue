@@ -29,7 +29,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.products-page {
-}
-</style>
+<style lang="scss" scoped></style>
