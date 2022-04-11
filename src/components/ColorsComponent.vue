@@ -1,8 +1,8 @@
 <template>
   <section class="colors">
     <header class="header">
-      <h2 class="title" v-if="checked === 0">Couleur</h2>
-      <h2 class="title" v-else>Couleur ({{ checked }})</h2>
+      <h2 class="title" v-if="selected.length === 0">Couleur</h2>
+      <h2 class="title" v-else>Couleur ({{ selected.length }})</h2>
     </header>
 
     <color-component
@@ -26,15 +26,24 @@ export default {
   },
   data() {
     return {
-      checked: 0,
+      selected: [],
     };
   },
   methods: {
-    addColor() {
-      this.checked++;
+    addColor(color) {
+      this.selected.push(color);
+
+      this.emit();
     },
-    removeColor() {
-      this.checked--;
+    removeColor(color) {
+      this.selected = this.selected.filter(
+        (selectedColor) => selectedColor !== color
+      );
+
+      this.emit();
+    },
+    emit() {
+      this.$emit('colors-selected', this.selected);
     },
   },
 };

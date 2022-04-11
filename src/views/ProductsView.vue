@@ -1,12 +1,21 @@
 <template>
   <section class="products-page">
     <header class="header">
-      <h2 class="title">Nouveautés</h2>
+      <h2 class="title">
+        Nouveautés
+        {{ title }}
+      </h2>
     </header>
 
-    <filters-component :genders="genders" :prices="prices" :colors="colors" />
+    <filters-component
+      :genders="genders"
+      :prices="prices"
+      :colors="colors"
+      @filter="setSelected"
+    />
 
     <products-component
+      :filters="selected"
       @genders-update="setGenders"
       @colors-update="setColors"
     />
@@ -22,9 +31,32 @@ export default {
   components: { FiltersComponent, ProductsComponent },
   data() {
     return {
+      title: '',
       genders: [],
-      prices: ['Moins de 50€', '50€ - 100€', '100€ - 150€', 'Plus de 150€'],
+      prices: [
+        {
+          min: 0,
+          max: 50,
+        },
+        {
+          min: 50,
+          max: 100,
+        },
+        {
+          min: 100,
+          max: 150,
+        },
+        {
+          min: 150,
+          max: null,
+        },
+      ],
       colors: [],
+      selected: {
+        genders: [],
+        prices: [],
+        colors: [],
+      },
     };
   },
   methods: {
@@ -36,6 +68,38 @@ export default {
     },
     setColors(colors) {
       this.colors = colors;
+    },
+    setSelected(selected) {
+      this.selected = selected;
+
+      this.setTitle();
+    },
+    setTitle() {
+      let title = [];
+
+      for (let key in this.selected) {
+        /* Management of the prices */
+        if (key === 'prices') {
+          let prices = [];
+
+          for (let price of this.selected[key]) {
+            prices.push(
+              price.min === 0
+                ? `Moins de ${price.max}€`
+                : !price.max
+                ? `Plus de ${price.min}€`
+                : `${price.min}€ - ${price.max}€`
+            );
+          }
+
+          title = title.concat(prices);
+        } else {
+          /* Anything else */
+          title = title.concat(this.selected[key]);
+        }
+      }
+
+      this.title = title.join(' ');
     },
   },
 };

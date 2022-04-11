@@ -1,10 +1,10 @@
 <template>
-  <label :for="`color-${color}`">
+  <label :for="`${color}`">
     {{ color }}
     <input
       type="checkbox"
-      :name="`color-${color}`"
-      :id="`color-${color}`"
+      :name="`${color}`"
+      :id="`${color}`"
       @change="updateColor"
     />
   </label>
@@ -21,9 +21,9 @@ export default {
       const checkbox = event.target;
 
       if (checkbox.checked) {
-        this.$emit('color-add');
+        this.$emit('color-add', this.color);
       } else {
-        this.$emit('color-remove');
+        this.$emit('color-remove', this.color);
       }
     },
   },

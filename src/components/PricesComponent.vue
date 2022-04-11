@@ -1,8 +1,8 @@
 <template>
   <section class="prices">
     <header class="header">
-      <h2 class="title" v-if="checked === 0">Recherche par prix</h2>
-      <h2 class="title" v-else>Recherche par prix ({{ checked }})</h2>
+      <h2 class="title" v-if="selected.length === 0">Recherche par prix</h2>
+      <h2 class="title" v-else>Recherche par prix ({{ selected.length }})</h2>
     </header>
 
     <price-component
@@ -26,15 +26,24 @@ export default {
   },
   data() {
     return {
-      checked: 0,
+      selected: [],
     };
   },
   methods: {
-    addPrice() {
-      this.checked++;
+    addPrice(price) {
+      this.selected.push(price);
+
+      this.emit();
     },
-    removePrice() {
-      this.checked--;
+    removePrice(price) {
+      this.selected = this.selected.filter(
+        (selectedPrice) => selectedPrice !== price
+      );
+
+      this.emit();
+    },
+    emit() {
+      this.$emit('prices-selected', this.selected);
     },
   },
 };

@@ -1,8 +1,8 @@
 <template>
   <section class="genders">
     <header class="header">
-      <h2 class="title" v-if="checked === 0">Genre</h2>
-      <h2 class="title" v-else>Genre ({{ checked }})</h2>
+      <h2 class="title" v-if="selected.length === 0">Genre</h2>
+      <h2 class="title" v-else>Genre ({{ selected.length }})</h2>
     </header>
 
     <gender-component
@@ -26,15 +26,24 @@ export default {
   },
   data() {
     return {
-      checked: 0,
+      selected: [],
     };
   },
   methods: {
-    addGender() {
-      this.checked++;
+    addGender(gender) {
+      this.selected.push(gender);
+
+      this.emit();
     },
-    removeGender() {
-      this.checked--;
+    removeGender(gender) {
+      this.selected = this.selected.filter(
+        (selectedGender) => selectedGender !== gender
+      );
+
+      this.emit();
+    },
+    emit() {
+      this.$emit('genders-selected', this.selected);
     },
   },
 };
