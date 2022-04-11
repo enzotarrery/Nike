@@ -1,0 +1,18 @@
+/* 
+  WARNING: 
+  please follow the order as described below 
+  to prevent any use error! 
+*/
+
+/* 1 - requirements */
+@use 'tools/reset';
+
+/* 2 - base model */
+@use 'global/base';
+
+/* 3 - components */
+@use 'components/products';
+@use 'components/product';
+
+/* 4 - views */
+@use 'views/products-page';

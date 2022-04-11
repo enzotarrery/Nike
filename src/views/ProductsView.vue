@@ -1,12 +1,16 @@
 <template>
-  <div class="products-page">
+  <section class="products-page">
+    <header class="header">
+      <h2 class="title">Nouveautés</h2>
+    </header>
+
     <filters-component :genders="genders" :prices="prices" :colors="colors" />
 
     <products-component
       @genders-update="setGenders"
       @colors-update="setColors"
     />
-  </div>
+  </section>
 </template>
 
 <script>
