@@ -1,10 +1,11 @@
 <template>
-  <label :for="`${color}`">
+  <label :for="`${color}`" class="color__label">
     {{ color }}
     <input
       type="checkbox"
       :name="`${color}`"
       :id="`${color}`"
+      class="color__checkbox"
       @change="updateColor"
     />
   </label>

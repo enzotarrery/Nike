@@ -1,8 +1,8 @@
 <template>
   <section class="prices">
     <header class="header">
-      <h2 class="title" v-if="selected.length === 0">Recherche par prix</h2>
-      <h2 class="title" v-else>Recherche par prix ({{ selected.length }})</h2>
+      <h2 class="title" v-if="selected.length === 0">Rechercher par prix</h2>
+      <h2 class="title" v-else>Rechercher par prix ({{ selected.length }})</h2>
     </header>
 
     <price-component

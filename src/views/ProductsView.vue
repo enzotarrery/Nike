@@ -1,6 +1,6 @@
 <template>
   <section class="products-page">
-    <header class="header">
+    <header class="header header--main">
       <h2 class="title">
         Nouveautés
         {{ title }}

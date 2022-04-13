@@ -1,10 +1,11 @@
 <template>
-  <label :for="`${gender}`">
+  <label :for="`${gender}`" class="gender__label">
     {{ gender }}
     <input
       type="checkbox"
       :name="`${gender}`"
       :id="`${gender}`"
+      class="gender__checkbox"
       @change="updateGender"
     />
   </label>

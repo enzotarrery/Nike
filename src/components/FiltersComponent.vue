@@ -1,5 +1,6 @@
 <template>
   <aside class="filters">
+    <icon-component :name="'adjustments.svg'" :alt="'Filtrer'" />
     <genders-component :genders="genders" @genders-selected="setGenders" />
     <prices-component :prices="prices" @prices-selected="setPrices" />
     <colors-component :colors="colors" @colors-selected="setColors" />
@@ -10,10 +11,16 @@
 import GendersComponent from './GendersComponent.vue';
 import PricesComponent from './PricesComponent.vue';
 import ColorsComponent from './ColorsComponent.vue';
+import IconComponent from './IconComponent.vue';
 
 export default {
   name: 'FiltersComponent',
-  components: { GendersComponent, PricesComponent, ColorsComponent },
+  components: {
+    GendersComponent,
+    PricesComponent,
+    ColorsComponent,
+    IconComponent,
+  },
   props: {
     genders: Array,
     prices: Array,

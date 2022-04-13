@@ -1,5 +1,5 @@
 <template>
-  <div class="products__content" v-if="products.length !== 0">
+  <div class="products" v-if="products.length !== 0">
     <product-component
       v-for="(product, index) in filteredProducts"
       :key="index"
@@ -7,7 +7,7 @@
     />
   </div>
 
-  <div class="products__content" v-else>
+  <div class="products" v-else>
     <p>Aucun produit correspondant aux critères.</p>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
   name: 'ProductsComponent',
   components: { ProductComponent },
   props: {
-    filters: Object,
+    filters: { type: Object, required: true },
   },
   data() {
     return {
@@ -31,7 +31,9 @@ export default {
       .then((response) => response.json())
       .then((response) => {
         /* The data to be rendered */
-        this.products = response;
+        this.products = response.filter(
+          (product) => !this.emptyProduct(product)
+        );
 
         /* Deduce the genders & colors */
         let genders = [];
@@ -57,10 +59,15 @@ export default {
         this.$emit('colors-update', colors);
       })
       .catch((error) =>
-        console.log(`ERREUR [${error.code}] : ${error.message}.`)
+        console.warn(`ERREUR [${error.code}] : ${error.message}.`)
       );
   },
   methods: {
+    emptyProduct(product) {
+      const values = Object.values(product).filter((value) => value !== '');
+
+      return values.length <= 0;
+    },
     getPriceAsFloat(string) {
       return parseFloat(string.slice(0, -2).replace(',', '.'));
     },

@@ -4,6 +4,16 @@
 
     <figcaption class="product__content">
       <h3 class="product__title">{{ product.article }}</h3>
+      <p class="product__detail">
+        Chaussure {{ product.sexe === 'Mixte' ? '' : `pour ${product.sexe}` }}
+      </p>
+      <p class="product__detail">
+        {{
+          product.couleur.split(', ').length === 1
+            ? `${product.couleur.split(', ').length} couleur`
+            : `${product.couleur.split(', ').length} couleurs`
+        }}
+      </p>
       <p class="product__price">{{ product.prix }}</p>
     </figcaption>
   </figure>

@@ -1,0 +1,11 @@
+@use '../variables/mixins';
+
+.products-page {
+  @include mixins.flexarize(row, flex-start, flex-start, wrap);
+}
+
+@media screen and (min-width: 992px) {
+  .products-page {
+    padding: 3rem;
+  }
+}

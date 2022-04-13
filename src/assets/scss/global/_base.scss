@@ -1,3 +1,5 @@
+@use '../variables/fonts';
+
 /* General rules */
 *,
 *:after,
@@ -10,8 +12,10 @@ html {
 }
 
 body {
-  font-size: 1.4rem; /* 14px by default */
-  font-family: 'Noto sans', sans-serif;
+  font: {
+    size: 1.4rem; /* 14px by default */
+    family: fonts.$main-font;
+  }
 }
 
 /* 
