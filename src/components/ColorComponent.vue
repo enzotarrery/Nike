@@ -4,16 +4,18 @@
       type="checkbox"
       :name="color"
       :id="color"
-      class="field__checkbox field__checkbox--hidden"
+      class="field__checkbox field__checkbox--hidden color__checkbox"
       @change="updateColor"
     />
     <label
       :for="color"
-      class="field__label--capitalized color__label"
+      :class="`field__label--capitalized color__label ${
+        color === 'blanc' ? 'color__label--outlined' : ''
+      }`"
       :style="`background-color: ${getStyleColor(color)}`"
     >
-      {{ color }}
     </label>
+    <p class="color__caption">{{ color }}</p>
   </div>
 </template>
 
