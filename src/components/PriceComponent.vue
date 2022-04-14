@@ -1,20 +1,22 @@
 <template>
-  <label :for="`${price.min}-${price.max}`" class="filter__label">
+  <div class="field price">
     <input
       type="checkbox"
       :name="`${price.min}-${price.max}`"
       :id="`${price.min}-${price.max}`"
-      class="filter__checkbox"
+      class="field__checkbox"
       @change="updatePrice"
     />
-    {{
-      price.min === 0
-        ? `Moins de ${price.max}€`
-        : !price.max
-        ? `Plus de ${price.min}€`
-        : `${price.min}€ - ${price.max}€`
-    }}
-  </label>
+    <label :for="`${price.min}-${price.max}`" class="field__label">
+      {{
+        price.min === 0
+          ? `Moins de ${price.max}€`
+          : !price.max
+          ? `Plus de ${price.min}€`
+          : `${price.min}€ - ${price.max}€`
+      }}
+    </label>
+  </div>
 </template>
 
 <script>

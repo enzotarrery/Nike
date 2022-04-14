@@ -3,7 +3,7 @@
     <img
       :src="image('cancel.svg')"
       alt="Fermer"
-      class="icon icon--filters"
+      class="icon icon--filters mobile"
       @click="close"
     />
 
@@ -13,7 +13,7 @@
       <colors-component :colors="colors" @colors-selected="setColors" />
     </div>
 
-    <div class="filters__buttons">
+    <div class="filters__buttons mobile">
       <button type="button" class="button button--outlined" @click="clear">
         {{
           getNumberOfFilters === 0

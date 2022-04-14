@@ -1,0 +1,15 @@
+.field {
+  &__label {
+    cursor: pointer;
+
+    &--capitalized {
+      text-transform: capitalize;
+    }
+  }
+
+  &__checkbox {
+    &--hidden {
+      display: none;
+    }
+  }
+}

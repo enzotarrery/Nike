@@ -1,12 +1,19 @@
 @use '../variables/mixins';
 
 .header {
+  @include mixins.flexarize(row, space-between, center);
   padding: 2rem;
-  flex: 0 0 100%;
+  width: 100%;
+  cursor: pointer;
 
   &--main {
-    @include mixins.flexarize(row, space-between, center);
     flex: initial;
-    width: 100%;
+    text-transform: capitalize;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .header {
+    padding: 0;
   }
 }

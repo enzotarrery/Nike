@@ -1,15 +1,15 @@
 <template>
-  <div class="color">
+  <div class="field color">
     <input
       type="checkbox"
       :name="color"
       :id="color"
-      class="filter__checkbox color__checkbox"
+      class="field__checkbox field__checkbox--hidden"
       @change="updateColor"
     />
     <label
       :for="color"
-      class="filter__label filter__label--capitalized color__label"
+      class="field__label--capitalized color__label"
       :style="`background-color: ${getStyleColor(color)}`"
     >
       {{ color }}

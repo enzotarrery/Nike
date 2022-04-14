@@ -10,4 +10,15 @@
     width: 8vw;
     height: 8vw;
   }
+
+  &--rotate180 {
+    transform: rotate(-180deg);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .icon {
+    width: 2vw;
+    height: 2vw;
+  }
 }

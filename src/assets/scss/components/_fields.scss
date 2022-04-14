@@ -1,0 +1,19 @@
+@use '../variables/mixins';
+
+.fields {
+  @include mixins.flexarize(column, center);
+  gap: 0.5rem;
+  width: 100%;
+
+  &--colors {
+    @include mixins.flexarize(row, space-between, center, wrap);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .fields {
+    &--hidden {
+      display: none;
+    }
+  }
+}

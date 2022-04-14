@@ -1,33 +1,35 @@
 <template>
-  <section class="products-page">
-    <header class="header header--main">
-      <h2 class="title">
-        Nouveautés
-        {{ title }}
-      </h2>
-      <img
-        :src="image('adjustments.svg')"
-        alt="Filtrer"
-        class="icon"
-        @click="open"
+  <main>
+    <section class="products-page">
+      <header class="header header--main">
+        <h2 class="title">
+          Nouveautés
+          {{ title }}
+        </h2>
+        <img
+          :src="image('adjustments.svg')"
+          alt="Filtrer"
+          class="icon mobile"
+          @click="open"
+        />
+      </header>
+
+      <filters-component
+        :genders="genders"
+        :prices="prices"
+        :colors="colors"
+        :show.sync="show"
+        @filter="setSelected"
+        @close="close"
       />
-    </header>
 
-    <filters-component
-      :genders="genders"
-      :prices="prices"
-      :colors="colors"
-      :show.sync="show"
-      @filter="setSelected"
-      @close="close"
-    />
-
-    <products-component
-      :filters="selected"
-      @genders-update="setGenders"
-      @colors-update="setColors"
-    />
-  </section>
+      <products-component
+        :filters="selected"
+        @genders-update="setGenders"
+        @colors-update="setColors"
+      />
+    </section>
+  </main>
 </template>
 
 <script>

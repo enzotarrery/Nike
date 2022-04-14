@@ -1,9 +1,2 @@
-@use '../variables/mixins';
-
 .colors {
-  @include mixins.flexarize(row, space-between, center, wrap);
-
-  &__header {
-    flex: 0 0 100%;
-  }
 }

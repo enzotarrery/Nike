@@ -3,23 +3,27 @@
 
 .filter {
   @include mixins.flexarize(column, center);
-  gap: 0.5rem;
+  gap: 1.5rem;
   width: 100%;
+  padding: 4rem 0;
   flex: 1 0 0%;
 
   &:not(:last-of-type) {
     border-bottom: 1px solid colors.$grey;
   }
+}
 
-  &__header {
-    margin-bottom: 1.5rem;
-  }
+@media screen and (min-width: 992px) {
+  .filter {
+    padding: 2rem 0;
+    border-top: 1px solid colors.$grey;
 
-  &__label {
-    cursor: pointer;
+    &:not(:last-of-type) {
+      border-bottom: none;
+    }
 
-    &--capitalized {
-      text-transform: capitalize;
+    &__title {
+      font-size: 1vw;
     }
   }
 }

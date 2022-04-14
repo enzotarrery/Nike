@@ -1,17 +1,25 @@
 <template>
   <section class="filter colors">
-    <header class="filter__header colors__header">
-      <h2 class="title" v-if="selected.length === 0">Couleur</h2>
-      <h2 class="title" v-else>Couleur ({{ selected.length }})</h2>
+    <header class="header" @click="toggle">
+      <h2 class="title filter__title">
+        Couleur {{ selected.length === 0 ? null : `(${selected.length})` }}
+      </h2>
+      <img
+        :src="image('chevron.svg')"
+        alt="Flèche"
+        :class="`icon ${open ? '' : 'icon--rotate180'} desktop`"
+      />
     </header>
 
-    <color-component
-      v-for="(color, index) in colors"
-      :key="index"
-      :color="color"
-      @color-add="addColor"
-      @color-remove="removeColor"
-    />
+    <div :class="`fields fields--colors ${open ? '' : 'fields--hidden'}`">
+      <color-component
+        v-for="(color, index) in colors"
+        :key="index"
+        :color="color"
+        @color-add="addColor"
+        @color-remove="removeColor"
+      />
+    </div>
   </section>
 </template>
 
@@ -26,6 +34,7 @@ export default {
   },
   data() {
     return {
+      open: true,
       selected: [],
     };
   },
@@ -42,8 +51,14 @@ export default {
 
       this.emit();
     },
+    toggle() {
+      this.open = !this.open;
+    },
     emit() {
       this.$emit('colors-selected', this.selected);
+    },
+    image(name) {
+      return require(`@/assets/img/${name}`);
     },
   },
 };

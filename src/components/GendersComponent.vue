@@ -1,17 +1,25 @@
 <template>
   <section class="filter">
-    <header class="filter__header">
-      <h2 class="title" v-if="selected.length === 0">Genre</h2>
-      <h2 class="title" v-else>Genre ({{ selected.length }})</h2>
+    <header class="header" @click="toggle">
+      <h2 class="title filter__title">
+        Genre {{ selected.length === 0 ? null : `(${selected.length})` }}
+      </h2>
+      <img
+        :src="image('chevron.svg')"
+        alt="Flèche"
+        :class="`icon ${open ? '' : 'icon--rotate180'} desktop`"
+      />
     </header>
 
-    <gender-component
-      v-for="(gender, index) in genders"
-      :key="index"
-      :gender="gender"
-      @gender-add="addGender"
-      @gender-remove="removeGender"
-    />
+    <div :class="`fields ${open ? '' : 'fields--hidden'}`">
+      <gender-component
+        v-for="(gender, index) in genders"
+        :key="index"
+        :gender="gender"
+        @gender-add="addGender"
+        @gender-remove="removeGender"
+      />
+    </div>
   </section>
 </template>
 
@@ -26,6 +34,7 @@ export default {
   },
   data() {
     return {
+      open: true,
       selected: [],
     };
   },
@@ -44,6 +53,12 @@ export default {
     },
     emit() {
       this.$emit('genders-selected', this.selected);
+    },
+    toggle() {
+      this.open = !this.open;
+    },
+    image(name) {
+      return require(`@/assets/img/${name}`);
     },
   },
 };
