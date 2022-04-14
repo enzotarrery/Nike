@@ -3,10 +3,10 @@
 
 .header {
   @include mixins.flexarize(row, space-between, center);
-  padding: 2rem;
   width: 100%;
 
   &--main {
+    padding: 2rem;
     flex: initial;
     text-transform: capitalize;
   }
