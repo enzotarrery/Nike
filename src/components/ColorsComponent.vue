@@ -1,6 +1,6 @@
 <template>
-  <section class="colors">
-    <header class="header">
+  <section class="filter colors">
+    <header class="filter__header colors__header">
       <h2 class="title" v-if="selected.length === 0">Couleur</h2>
       <h2 class="title" v-else>Couleur ({{ selected.length }})</h2>
     </header>

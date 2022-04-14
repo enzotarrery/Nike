@@ -1,5 +1,22 @@
+@use '../variables/mixins';
+
 .color {
+  flex: 0 0 30%;
+
   &__label {
-    text-transform: capitalize;
+    @include mixins.flexarize(column, space-between, center);
+    gap: 1rem;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  &__checkbox {
+    display: none;
   }
 }

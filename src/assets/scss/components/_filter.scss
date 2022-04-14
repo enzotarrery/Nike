@@ -1,0 +1,25 @@
+@use '../variables/colors';
+@use '../variables/mixins';
+
+.filter {
+  @include mixins.flexarize(column, center);
+  gap: 0.5rem;
+  width: 100%;
+  flex: 1 0 0%;
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid colors.$grey;
+  }
+
+  &__header {
+    margin-bottom: 1.5rem;
+  }
+
+  &__label {
+    cursor: pointer;
+
+    &--capitalized {
+      text-transform: capitalize;
+    }
+  }
+}

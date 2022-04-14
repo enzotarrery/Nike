@@ -1,13 +1,13 @@
 <template>
-  <label :for="`${gender}`" class="gender__label">
-    {{ gender }}
+  <label :for="`${gender}`" class="filter__label filter__label--capitalized">
     <input
       type="checkbox"
       :name="`${gender}`"
       :id="`${gender}`"
-      class="gender__checkbox"
+      class="filter__checkbox"
       @change="updateGender"
     />
+    {{ gender }}
   </label>
 </template>
 

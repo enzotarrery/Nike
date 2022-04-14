@@ -1,7 +1,9 @@
 @use '../variables/mixins';
 
 .products-page {
-  @include mixins.flexarize(row, flex-start, flex-start, wrap);
+  @include mixins.flexarize(column);
+  position: relative;
+  min-height: 100vh;
 }
 
 @media screen and (min-width: 992px) {

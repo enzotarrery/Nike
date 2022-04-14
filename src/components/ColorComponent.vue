@@ -1,14 +1,20 @@
 <template>
-  <label :for="`${color}`" class="color__label">
-    {{ color }}
+  <div class="color">
     <input
       type="checkbox"
-      :name="`${color}`"
-      :id="`${color}`"
-      class="color__checkbox"
+      :name="color"
+      :id="color"
+      class="filter__checkbox color__checkbox"
       @change="updateColor"
     />
-  </label>
+    <label
+      :for="color"
+      class="filter__label filter__label--capitalized color__label"
+      :style="`background-color: ${getStyleColor(color)}`"
+    >
+      {{ color }}
+    </label>
+  </div>
 </template>
 
 <script>
@@ -18,6 +24,28 @@ export default {
     color: String,
   },
   methods: {
+    getStyleColor(color) {
+      switch (color) {
+        case 'rouge':
+          return 'red';
+        case 'bleu':
+          return 'blue';
+        case 'jaune':
+          return 'yellow';
+        case 'rose':
+          return 'pink';
+        case 'noir':
+          return 'black';
+        case 'blanc':
+          return 'white';
+        case 'vert':
+          return 'green';
+        case 'gris':
+          return 'grey';
+        default:
+          return null;
+      }
+    },
     updateColor(event) {
       const checkbox = event.target;
 

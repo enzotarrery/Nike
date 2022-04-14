@@ -1,6 +1,6 @@
 <template>
-  <section class="genders">
-    <header class="header">
+  <section class="filter">
+    <header class="filter__header">
       <h2 class="title" v-if="selected.length === 0">Genre</h2>
       <h2 class="title" v-else>Genre ({{ selected.length }})</h2>
     </header>

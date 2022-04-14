@@ -5,13 +5,21 @@
         Nouveautés
         {{ title }}
       </h2>
+      <img
+        :src="image('adjustments.svg')"
+        alt="Filtrer"
+        class="icon"
+        @click="open"
+      />
     </header>
 
     <filters-component
       :genders="genders"
       :prices="prices"
       :colors="colors"
+      :show.sync="show"
       @filter="setSelected"
+      @close="close"
     />
 
     <products-component
@@ -57,6 +65,7 @@ export default {
         prices: [],
         colors: [],
       },
+      show: false,
     };
   },
   methods: {
@@ -100,6 +109,15 @@ export default {
       }
 
       this.title = title.join(' ');
+    },
+    open() {
+      this.show = true;
+    },
+    close() {
+      this.show = false;
+    },
+    image(name) {
+      return require(`@/assets/img/${name}`);
     },
   },
 };

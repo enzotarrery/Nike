@@ -1,0 +1,13 @@
+.icon {
+  width: 6vw;
+  height: 6vw;
+  cursor: pointer;
+
+  &--filters {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 8vw;
+    height: 8vw;
+  }
+}

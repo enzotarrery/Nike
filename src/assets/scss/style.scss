@@ -11,9 +11,12 @@
 @use 'global/base';
 
 /* 3 - components */
+@use 'components/icon';
 @use 'components/title';
+@use 'components/button';
 @use 'components/header';
 @use 'components/filters';
+@use 'components/filter';
 @use 'components/gender';
 @use 'components/colors';
 @use 'components/color';

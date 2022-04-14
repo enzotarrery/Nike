@@ -1,4 +1,12 @@
+@use '../variables/mixins';
+
 .header {
   padding: 2rem;
   flex: 0 0 100%;
+
+  &--main {
+    @include mixins.flexarize(row, space-between, center);
+    flex: initial;
+    width: 100%;
+  }
 }

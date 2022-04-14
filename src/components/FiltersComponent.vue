@@ -1,9 +1,30 @@
 <template>
-  <aside class="filters">
-    <icon-component :name="'adjustments.svg'" :alt="'Filtrer'" />
-    <genders-component :genders="genders" @genders-selected="setGenders" />
-    <prices-component :prices="prices" @prices-selected="setPrices" />
-    <colors-component :colors="colors" @colors-selected="setColors" />
+  <aside :class="`filters ${show ? 'filters--open' : ''}`">
+    <img
+      :src="image('cancel.svg')"
+      alt="Fermer"
+      class="icon icon--filters"
+      @click="close"
+    />
+
+    <div class="filters__content">
+      <genders-component :genders="genders" @genders-selected="setGenders" />
+      <prices-component :prices="prices" @prices-selected="setPrices" />
+      <colors-component :colors="colors" @colors-selected="setColors" />
+    </div>
+
+    <div class="filters__buttons">
+      <button type="button" class="button button--outlined" @click="clear">
+        {{
+          getNumberOfFilters === 0
+            ? 'Effacer'
+            : `Effacer (${getNumberOfFilters})`
+        }}
+      </button>
+      <button type="button" class="button button--filled" @click="close">
+        Appliquer
+      </button>
+    </div>
   </aside>
 </template>
 
@@ -11,7 +32,6 @@
 import GendersComponent from './GendersComponent.vue';
 import PricesComponent from './PricesComponent.vue';
 import ColorsComponent from './ColorsComponent.vue';
-import IconComponent from './IconComponent.vue';
 
 export default {
   name: 'FiltersComponent',
@@ -19,9 +39,9 @@ export default {
     GendersComponent,
     PricesComponent,
     ColorsComponent,
-    IconComponent,
   },
   props: {
+    show: Boolean,
     genders: Array,
     prices: Array,
     colors: Array,
@@ -34,6 +54,15 @@ export default {
         colors: [],
       },
     };
+  },
+  computed: {
+    getNumberOfFilters() {
+      return (
+        this.selected.genders.length +
+        this.selected.prices.length +
+        this.selected.colors.length
+      );
+    },
   },
   methods: {
     setGenders(genders) {
@@ -53,6 +82,21 @@ export default {
     },
     emit() {
       this.$emit('filter', this.selected);
+    },
+    close() {
+      this.$emit('close');
+    },
+    clear() {
+      this.selected = {
+        genders: [],
+        prices: [],
+        colors: [],
+      };
+
+      this.emit();
+    },
+    image(name) {
+      return require(`@/assets/img/${name}`);
     },
   },
 };

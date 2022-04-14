@@ -1,8 +1,34 @@
 @use '../variables/colors';
+@use '../variables/mixins';
 
 .filters {
+  @include mixins.flexarize(column, space-between, center);
   position: fixed;
+  top: 0;
+  right: -100vw;
   width: 100%;
   height: 100%;
   background-color: colors.$white;
+
+  transition: right 0.25s ease-in-out;
+
+  &--open {
+    right: 0;
+  }
+
+  &__content {
+    @include mixins.flexarize(column, space-between, center);
+    padding: 0 4rem;
+    flex: 1 0 0%;
+    overflow-y: scroll;
+  }
+
+  &__buttons {
+    @include mixins.flexarize(row, center, center);
+    gap: 1rem;
+    width: 100%;
+    height: 8rem;
+    background-color: colors.$white;
+    border-top: 1px solid colors.$grey;
+  }
 }

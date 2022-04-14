@@ -4,4 +4,8 @@
   @include mixins.flexarize(row, space-between, flex-start, wrap);
   gap: 0.5rem;
   flex: 1 0 0%;
+
+  &__message {
+    margin: auto;
+  }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="products" v-if="products.length !== 0">
+  <div class="products" v-if="filteredProducts.length !== 0">
     <product-component
       v-for="(product, index) in filteredProducts"
       :key="index"
@@ -8,7 +8,7 @@
   </div>
 
   <div class="products" v-else>
-    <p>Aucun produit correspondant aux critères.</p>
+    <p class="products__message">Aucun produit correspondant aux critères.</p>
   </div>
 </template>
 
