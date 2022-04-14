@@ -18,7 +18,7 @@
         :genders="genders"
         :prices="prices"
         :colors="colors"
-        :show.sync="show"
+        :show="show"
         @filter="setSelected"
         @close="close"
       />
