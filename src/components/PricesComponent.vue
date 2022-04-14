@@ -1,6 +1,6 @@
 <template>
   <section class="filter">
-    <header class="header" @click="toggle">
+    <header class="header header--hoverable" @click="toggle">
       <h2 class="title filter__title">
         Rechercher par prix
         {{ selected.length === 0 ? null : `(${selected.length})` }}

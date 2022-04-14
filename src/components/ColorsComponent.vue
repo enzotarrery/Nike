@@ -1,6 +1,6 @@
 <template>
   <section class="filter colors">
-    <header class="header" @click="toggle">
+    <header class="header header--hoverable" @click="toggle">
       <h2 class="title filter__title">
         Couleur {{ selected.length === 0 ? null : `(${selected.length})` }}
       </h2>
