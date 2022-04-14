@@ -3,6 +3,7 @@
 .products {
   @include mixins.flexarize(row, space-between, flex-start, wrap);
   gap: 0.5rem;
+  width: 100%;
   flex: 1 0 0%;
 
   &__message {
