@@ -31,7 +31,10 @@ export default {
   components: { PriceComponent },
   name: 'PricesComponent',
   props: {
-    prices: Array,
+    prices: {
+      type: Array,
+      required: true,
+    },
   },
   data() {
     return {

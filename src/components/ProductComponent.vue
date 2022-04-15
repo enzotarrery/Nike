@@ -23,7 +23,10 @@
 export default {
   name: 'ProductComponent',
   props: {
-    product: Object,
+    product: {
+      type: Object,
+      required: true,
+    },
   },
   computed: {
     image() {

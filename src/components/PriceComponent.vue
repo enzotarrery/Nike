@@ -23,7 +23,10 @@
 export default {
   name: 'PriceComponent',
   props: {
-    price: Object,
+    price: {
+      type: Object,
+      required: true,
+    },
   },
   methods: {
     updatePrice(event) {

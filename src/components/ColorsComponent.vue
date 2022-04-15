@@ -30,7 +30,10 @@ export default {
   name: 'ColorsComponent',
   components: { ColorComponent },
   props: {
-    colors: Array,
+    colors: {
+      type: Array,
+      required: true,
+    },
   },
   data() {
     return {

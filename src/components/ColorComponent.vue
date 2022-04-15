@@ -23,7 +23,10 @@
 export default {
   name: 'ColorComponent',
   props: {
-    color: String,
+    color: {
+      type: String,
+      required: true,
+    },
   },
   methods: {
     getStyleColor(color) {

@@ -30,7 +30,10 @@ export default {
   name: 'GendersComponent',
   components: { GenderComponent },
   props: {
-    genders: Array,
+    genders: {
+      type: Array,
+      required: true,
+    },
   },
   data() {
     return {

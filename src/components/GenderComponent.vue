@@ -17,7 +17,10 @@
 export default {
   name: 'GenderComponent',
   props: {
-    gender: String,
+    gender: {
+      type: String,
+      required: true,
+    },
   },
   methods: {
     updateGender(event) {

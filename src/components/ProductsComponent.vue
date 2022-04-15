@@ -19,7 +19,10 @@ export default {
   name: 'ProductsComponent',
   components: { ProductComponent },
   props: {
-    filters: { type: Object, required: true },
+    filters: {
+      type: Object,
+      required: true,
+    },
   },
   data() {
     return {

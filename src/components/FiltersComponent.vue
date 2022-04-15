@@ -41,10 +41,22 @@ export default {
     ColorsComponent,
   },
   props: {
-    show: Boolean,
-    genders: Array,
-    prices: Array,
-    colors: Array,
+    show: {
+      type: Boolean,
+      required: true,
+    },
+    genders: {
+      type: Array,
+      required: true,
+    },
+    prices: {
+      type: Array,
+      required: true,
+    },
+    colors: {
+      type: Array,
+      required: true,
+    },
   },
   data() {
     return {
